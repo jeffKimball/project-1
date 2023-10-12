@@ -11,35 +11,24 @@ const Expenses = ({ items }) => {
         setFilteredYear(selectedYear)
     }
 
+    const filteredItems = items.filter(expense =>{
+        return expense.date.getFullYear().toString() === filteredYear
+    })
+
     return (
         
             <div>                            
                 <Card className='expenses'>
-                <ExpenseFilter selected={filteredYear} onYearSelect={getFilteredYear}/>
+                    <ExpenseFilter selected={filteredYear} onYearSelect={getFilteredYear}/>
+                    {filteredItems.map(expense => (
                     <ExpenseItem 
-                        key={items[0].id} 
-                        title={items[0].title} 
-                        amount={items[0].amount} 
-                        date={items[0].date} 
+                        key={expense.id}
+                        title={expense.title}
+                        amount={expense.amount}
+                        date={expense.date}
                     />
-                    <ExpenseItem 
-                        key={items[1].id} 
-                        title={items[1].title} 
-                        amount={items[1].amount} 
-                        date={items[1].date} 
-                    />
-                    <ExpenseItem 
-                        key={items[2].id} 
-                        title={items[2].title} 
-                        amount={items[2].amount} 
-                        date={items[2].date} 
-                    />
-                    <ExpenseItem 
-                        key={items[3].id} 
-                        title={items[3].title} 
-                        amount={items[3].amount} 
-                        date={items[3].date} 
-                    />
+                    ))}
+                    
                 </Card>
         </div>
         
