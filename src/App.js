@@ -22,6 +22,12 @@ const DUMMY_EXPENSES = [
     amount: 450,
     date: new Date(2021, 5, 12),
   },
+  {
+    id: 'e5',
+    title: 'Phone Bill',
+    amount: 25.55,
+    date: new Date(2022, 2, 17),
+  },
 ]
 
 const App = () => {
@@ -29,7 +35,7 @@ const App = () => {
   
 
   const addExpenseHandler = (newExpense) => {
-    setExpenses((prevState) => [...prevState, newExpense])
+    setExpenses((prevState) => [newExpense, ...prevState])
   }
 
   return (
